@@ -17,16 +17,16 @@ import { useRouter } from 'next/navigation';
 const loginFormSchema = z.object({
   email: z
     .string({
-      required_error: 'Campo obrigatório'
+      required_error: 'Required field'
     })
     .trim()
-    .min(1, { message: 'Campo obrigatório' }),
+    .min(1, { message: 'Required field' }),
   password: z
     .string({
-      required_error: 'Campo obrigatório'
+      required_error: 'Required field'
     })
     .trim()
-    .min(1, { message: 'Campo obrigatório' })
+    .min(1, { message: 'Required field' })
 });
 
 export function LoginForm() {
