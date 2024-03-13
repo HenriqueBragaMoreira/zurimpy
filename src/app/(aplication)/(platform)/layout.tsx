@@ -1,6 +1,5 @@
-import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
-import '../styles/globals.css';
+import '@/styles/globals.css';
 import { cn } from '@/lib/utils';
 
 const fontSans = FontSans({
@@ -8,15 +7,7 @@ const fontSans = FontSans({
   variable: '--font-sans'
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: 'Zurimpy',
-    template: '%s | Zurimpy'
-  },
-  description: 'Zurimpy been desenvolved from braga'
-};
-
-export default function RootLayout({
+export default function PlatformLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
