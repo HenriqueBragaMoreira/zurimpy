@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { LoginForm } from './form/loginForm';
 import { useState } from 'react';
 import { CreateAccountForm } from './form/createAccountForm';
+import { ForgotPasswordForm } from './form/forgotPasswordForm';
 
 export function MainContainer() {
   const [showForm, setShowForm] = useState('login');
@@ -75,7 +76,7 @@ export function MainContainer() {
             subtitle="We'll send new password link to email"
             setShowForm={setShowForm}
           >
-            FORGOT PASSWORD
+            <ForgotPasswordForm />
           </CardContainer>
         )}
 
