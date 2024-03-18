@@ -1,5 +1,5 @@
 'use client';
-import { routes } from '@/utils/routes';
+import { routes } from '@/utils/pageRoutes';
 import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
 import { useState } from 'react';

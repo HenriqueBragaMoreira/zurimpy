@@ -1,12 +1,16 @@
 'use client';
 import { Lock, Smile } from 'lucide-react';
-import { CardContainer } from '../../../components/cardContainer';
+import { CardContainer } from '@/components/cardContainer';
 import { Header } from './header';
 import { Button } from '@/components/ui/button';
 import { LoginForm } from './form/loginForm';
 import { useState } from 'react';
 import { CreateAccountForm } from './form/createAccountForm';
 import { ForgotPasswordForm } from './form/forgotPasswordForm';
+import GithubLogo from '@/../public/githubLogo.svg';
+import GoogleLogo from '@/../public/googleLogo.svg';
+import Image from 'next/image';
+import { signIn } from 'next-auth/react';
 
 export function MainContainer() {
   const [showForm, setShowForm] = useState('login');
@@ -25,10 +29,15 @@ export function MainContainer() {
             setShowForm={setShowForm}
           >
             <div className="flex flex-col w-full gap-4">
-              <Button className="bg-white text-black border border-gray-400 hover:bg-gray-100">
+              <Button className="bg-white gap-2 text-black border border-gray-400 hover:bg-gray-100">
+                <Image src={GoogleLogo} alt="Logo da Google colorida" height={25} width={25} />
                 Sign in with Google
               </Button>
-              <Button className="bg-white text-black border border-gray-400 hover:bg-gray-100">
+              <Button
+                onClick={() => signIn('github', { callbackUrl: '/home' })}
+                className="bg-white gap-2 text-black border border-gray-400 hover:bg-gray-100"
+              >
+                <Image src={GithubLogo} alt="Logo da Github" height={25} width={25} />
                 Sign in with Github
               </Button>
             </div>

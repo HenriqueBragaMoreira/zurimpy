@@ -10,9 +10,11 @@ import {
   FormLabel,
   FormMessage
 } from '@/components/ui/form';
+import { useToast } from '@/components/ui/use-toast';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 
 const loginFormSchema = z.object({
   email: z
@@ -30,6 +32,7 @@ const loginFormSchema = z.object({
 });
 
 export function LoginForm() {
+  const { toast } = useToast();
   const router = useRouter();
 
   const form = useForm({
@@ -40,10 +43,31 @@ export function LoginForm() {
     }
   });
 
+  async function handleSignIn(values: { email: string; password: string }) {
+    const res = await signIn('credentials', {
+      redirect: false,
+      email: values.email,
+      password: values.password,
+      callbackUrl: `${window.location.origin}`
+    });
+
+    console.log(values);
+
+    if (res?.error) {
+      toast({
+        title: `${res.error}`,
+        description: 'Falha',
+        duration: 4000
+      });
+    }
+
+    if (res?.url) router.push(res.url);
+  }
+
   return (
     <div className="flex flex-col gap-4 w-full">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(() => router.push('/'))} autoComplete="off">
+        <form onSubmit={form.handleSubmit((values) => handleSignIn(values))} autoComplete="off">
           <FormField
             control={form.control}
             name="email"
