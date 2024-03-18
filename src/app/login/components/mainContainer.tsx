@@ -29,7 +29,10 @@ export function MainContainer() {
             setShowForm={setShowForm}
           >
             <div className="flex flex-col w-full gap-4">
-              <Button className="bg-white gap-2 text-black border border-gray-400 hover:bg-gray-100">
+              <Button
+                onClick={() => signIn('google', { callbackUrl: '/home' })}
+                className="bg-white gap-2 text-black border border-gray-400 hover:bg-gray-100"
+              >
                 <Image src={GoogleLogo} alt="Logo da Google colorida" height={25} width={25} />
                 Sign in with Google
               </Button>
