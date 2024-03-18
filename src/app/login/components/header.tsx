@@ -5,7 +5,7 @@ import logo from '@/../public/logoZurimpy.png';
 export function Header() {
   return (
     <div className="flex justify-between">
-      <a href="/" className="flex gap-2 items-center">
+      <a href="/login" className="flex gap-2 items-center">
         <Image src={logo} alt="Logo da empresa Zurimpy" width={40} height={40} />
         <h1 className="font-bold text-xl">Zurimpy</h1>
       </a>
