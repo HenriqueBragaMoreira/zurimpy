@@ -39,5 +39,9 @@ export const options: NextAuthOptions = {
         }
       }
     })
-  ]
+  ],
+  session: {
+    strategy: 'jwt',
+    maxAge: 1 * 60 * 60
+  }
 };

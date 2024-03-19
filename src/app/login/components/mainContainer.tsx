@@ -67,10 +67,18 @@ export function MainContainer() {
             type="login"
           >
             <div className="flex flex-col w-full gap-4">
-              <Button className="bg-white text-black border border-gray-400 hover:bg-gray-100">
+              <Button
+                onClick={() => signIn('google', { callbackUrl: '/home' })}
+                className="bg-white gap-2 text-black border border-gray-400 hover:bg-gray-100"
+              >
+                <Image src={GoogleLogo} alt="Logo da Google colorida" height={25} width={25} />
                 Sign in with Google
               </Button>
-              <Button className="bg-white text-black border border-gray-400 hover:bg-gray-100">
+              <Button
+                onClick={() => signIn('github', { callbackUrl: '/home' })}
+                className="bg-white gap-2 text-black border border-gray-400 hover:bg-gray-100"
+              >
+                <Image src={GithubLogo} alt="Logo da Github" height={25} width={25} />
                 Sign in with Github
               </Button>
             </div>

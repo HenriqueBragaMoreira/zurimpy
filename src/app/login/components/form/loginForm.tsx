@@ -51,8 +51,6 @@ export function LoginForm() {
       callbackUrl: `${window.location.origin}`
     });
 
-    console.log(values);
-
     if (res?.error) {
       toast({
         title: `${res.error}`,

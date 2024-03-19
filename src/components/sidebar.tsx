@@ -15,7 +15,7 @@ export function Sidebar() {
   }
 
   return (
-    <div className="flex flex-col items-center py-4 px-4 bg-gray-300 w-64 gap-10">
+    <div className="flex flex-col items-center py-4 px-4 bg-gray-200 w-64 gap-10">
       <div className="flex gap-2 items-center">
         <Image src={logo} alt="logo" height={50} width={50} />
         <h1 className="font-bold text-2xl">Zurimpy</h1>
