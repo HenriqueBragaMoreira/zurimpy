@@ -1,6 +1,6 @@
 import '@/styles/globals.css';
 import { Sidebar } from '@/components/sidebar';
-import { Navbar } from '@/components/navbar';
+import { Navbar } from '@/components/navbar/navbar';
 import { getServerSession } from 'next-auth';
 
 export default async function PlatformLayout({

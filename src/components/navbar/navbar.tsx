@@ -1,12 +1,15 @@
 'use client';
-import { Bell, ChevronLeft, Plus, Search } from 'lucide-react';
-import { Input } from './ui/input';
+import { ChevronLeft, Search } from 'lucide-react';
+import { Input } from '../ui/input';
 import { routes } from '@/utils/pageRoutes';
 import { usePathname } from 'next/navigation';
 import { Session } from 'next-auth';
 import Link from 'next/link';
+import { PlusDropdown } from './dropdowns/plusDropdown';
+import { NotificationsDropdown } from './dropdowns/notificationsDropdown';
+import { ProfileDropdown } from './dropdowns/profileDropdown';
 
-type SessionProps = {
+export type SessionProps = {
   session: Session | null;
 };
 
@@ -32,15 +35,9 @@ export function Navbar({ session }: SessionProps) {
         <Input className="bg-gray-200 pl-8" placeholder="Search..." />
       </div>
       <div className="flex gap-8 items-center">
-        <div className="bg-gray-200 rounded-full p-2 cursor-pointer">
-          <Plus size={20} className="text-gray-600" />
-        </div>
-        <Bell size={20} className="cursor-pointer text-gray-600" />
-        <div className="bg-[#EBDDCA] flex justify-center items-center w-10 h-10 rounded-full cursor-pointer">
-          <span className="font-bold text-gray-500">
-            {session?.user?.name?.charAt(0).toUpperCase()}
-          </span>
-        </div>
+        <PlusDropdown />
+        <NotificationsDropdown />
+        <ProfileDropdown session={session} />
       </div>
     </div>
   );
