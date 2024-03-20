@@ -1,15 +1,20 @@
 import '@/styles/globals.css';
 import { Sidebar } from '@/components/sidebar';
+import { Navbar } from '@/components/navbar';
+import { getServerSession } from 'next-auth';
 
-export default function PlatformLayout({
+export default async function PlatformLayout({
   children
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
+  const session = await getServerSession();
+
   return (
     <main className="flex h-screen">
       <Sidebar />
-      {children}
+      <div className="w-full">
+        <Navbar session={session} />
+        {children}
+      </div>
     </main>
   );
 }

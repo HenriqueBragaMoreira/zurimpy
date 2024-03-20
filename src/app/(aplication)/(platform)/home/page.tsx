@@ -9,7 +9,7 @@ export default async function Home() {
   const session = await getServerSession();
 
   return (
-    <div>
+    <div className="px-4 py-4">
       <h1>Home {session?.user?.name}</h1>
     </div>
   );

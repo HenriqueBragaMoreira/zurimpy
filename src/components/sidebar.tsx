@@ -2,17 +2,11 @@
 import { routes } from '@/utils/pageRoutes';
 import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
-import { useState } from 'react';
 import logo from '../../public/logoZurimpy.png';
 
 export function Sidebar() {
-  const [active, setActive] = useState(usePathname());
   const route = useRouter();
-
-  function handlePush(path: string) {
-    route.push(path);
-    setActive(path);
-  }
+  const current = usePathname();
 
   return (
     <div className="flex flex-col items-center py-4 px-4 bg-gray-200 w-64 gap-10">
@@ -23,8 +17,8 @@ export function Sidebar() {
       <div className="w-full flex flex-col gap-4">
         {routes.map((item) => (
           <div
-            onClick={() => handlePush(item.path)}
-            className={`flex gap-4 hover:bg-gray-400 font-semibold py-2 px-3 rounded-md items-center cursor-pointer ${item.path === active ? 'bg-gray-400 text-black' : 'text-gray-500'}`}
+            onClick={() => route.push(item.path)}
+            className={`flex gap-4 hover:bg-gray-400 font-semibold py-2 px-3 rounded-md items-center cursor-pointer ${item.path === current ? 'bg-gray-400 text-black' : 'text-gray-500'}`}
             key={item.id}
           >
             <span>
