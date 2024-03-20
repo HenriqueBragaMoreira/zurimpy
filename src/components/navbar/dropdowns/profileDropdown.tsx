@@ -4,10 +4,26 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem
-} from '../../ui/dropdown-menu';
+} from '@/components/ui/dropdown-menu';
 import { SessionProps } from '../navbar';
+import { signOut } from 'next-auth/react';
+import { useToast } from '@/components/ui/use-toast';
 
 export function ProfileDropdown({ session }: SessionProps) {
+  const { toast } = useToast();
+
+  async function logout() {
+    try {
+      await signOut({ redirect: false });
+    } catch {
+      toast({
+        variant: 'error',
+        title: 'Erro!',
+        description: 'Error when logging out!'
+      });
+    }
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -36,7 +52,9 @@ export function ProfileDropdown({ session }: SessionProps) {
         </DropdownMenuItem>
         <DropdownMenuItem className="flex gap-3 items-center pl-3">
           <LogOut color="gray" />
-          <p className="font-semibold">Logout</p>
+          <p onClick={() => logout()} className="font-semibold">
+            Logout
+          </p>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
