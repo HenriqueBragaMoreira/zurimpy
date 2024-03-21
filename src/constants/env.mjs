@@ -4,6 +4,7 @@ import { createEnv } from '@t3-oss/env-nextjs';
 
 export const env = createEnv({
   client: {
+    NEXTAUTH_URL: z.string().url(),
     NEXTAUTH_SECRET: z.string(),
     GITHUB_SECRET: z.string(),
     GITHUB_ID: z.string(),
@@ -11,6 +12,7 @@ export const env = createEnv({
     GOOGLE_CLIENT_SECRET: z.string()
   },
   runtimeEnv: {
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     GITHUB_SECRET: process.env.GITHUB_SECRET,
     GITHUB_ID: process.env.GITHUB_ID,
