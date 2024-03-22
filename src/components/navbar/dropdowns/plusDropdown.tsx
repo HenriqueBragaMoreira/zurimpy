@@ -4,7 +4,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { CalendarRange, PanelsLeftBottom, Plus, SquareCheck, Users } from 'lucide-react';
+import { CalendarRange, Plus } from 'lucide-react';
+import { TaskDialog } from '../dialogs/taskDialog';
+import { TeamDialog } from '../dialogs/teamDialog';
+import { BoardDialog } from '../dialogs/boardDialog';
 
 export function PlusDropdown() {
   return (
@@ -15,33 +18,9 @@ export function PlusDropdown() {
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 px-2 space-y-1">
-        <DropdownMenuItem className="flex gap-3">
-          <div className="bg-[#EEE9FD] rounded-full size-8 items-center flex justify-center">
-            <SquareCheck color="#6837E7" size={18} />
-          </div>
-          <div className="flex flex-col items-start gap-1">
-            <p className="font-semibold">Create Task</p>
-            <span className="text-xs text-gray-700">Create your tasks now</span>
-          </div>
-        </DropdownMenuItem>
-        <DropdownMenuItem className="flex gap-3">
-          <div className="bg-[#EEE9FD] rounded-full size-8 items-center flex justify-center">
-            <Users color="#6837E7" size={18} />
-          </div>
-          <div className="flex flex-col items-start gap-1">
-            <p className="font-semibold">Create Team</p>
-            <span className="text-xs text-gray-700">Create your team now</span>
-          </div>
-        </DropdownMenuItem>
-        <DropdownMenuItem className="flex gap-3">
-          <div className="bg-[#EEE9FD] rounded-full size-8 items-center flex justify-center">
-            <PanelsLeftBottom color="#6837E7" size={18} />
-          </div>
-          <div className="flex flex-col items-start gap-1">
-            <p className="font-semibold">Create Board</p>
-            <span className="text-xs text-gray-700">Create your board now</span>
-          </div>
-        </DropdownMenuItem>
+        <TaskDialog />
+        <TeamDialog />
+        <BoardDialog />
         <DropdownMenuItem className="flex gap-3">
           <div className="bg-[#EEE9FD] rounded-full size-8 items-center flex justify-center">
             <CalendarRange color="#6837E7" size={18} />
